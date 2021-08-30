@@ -1,2 +1,27 @@
+nav {
+    background-color: #D3D3D3;
+}
 
+body {
+    text-align: center !important;
+}
 
+.head-title {
+    font-size: 2.5rem !important;
+    line-height: 4rem;
+    padding: 50px;
+}
+.all-products{
+    margin: 25px;
+    
+}
+.card{
+    border: solid 1px !important;
+}
+footer {
+    padding: 50px;
+    background-color: #D3D3D3;
+}
+footer a {
+   color: black;
+}
