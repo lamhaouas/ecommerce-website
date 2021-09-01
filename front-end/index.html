@@ -14,9 +14,8 @@
   <!-- Font Awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
   <!-- Bootstrap  -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <title>Welcome to ORINOCO</title>
 </head>
 
@@ -26,39 +25,52 @@
   <div class="">
     <!-- Nav Bar -->
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand " href="">orinoco</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.html">Cart</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact Us</a>
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand " href="">orinoco</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search Product" aria-label="Search ">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form>
+        </div>
       </div>
     </nav>
 
 
     <!-- Orinoco -->
 
-    <div class="row">
-      <div class="col-lg-6">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 align-self-center">
+
         <h1 class="head-title">Buy our Snuggly Bears and spread some Love</h1>
-        <button type="button" class="btn btn-outline-dark btn-lg "> All Products</button>
+        <button type="button" class="btn btn-outline-primary btn-lg "> All Products</button>
+
       </div>
 
-      <div class="col-lg-6">
-        <img class="" src="/back-end/images/teddy_1.jpg" alt="" width="570px" height="380px">
+      <div class="col-lg-6 align-self-center">
+
+        <img class="img-fluid " style="border-radius: 25px;" src="/back-end/images/homeimage.jpg" alt="">
+
       </div>
+
     </div>
 
 
@@ -66,30 +78,33 @@
     <!-- Products -->
     <section class="all-products" id="products">
       <h2>Products</h2>
-      <div class="card" style="width: 18rem;">
-        <img src="/back-end/images/teddy_1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <p>00.00$</p>
-          <a href="#" class="btn btn-primary">Add to cart</a>
-        </div>
+      <a href="">
+        <div class="card" style="width: 18rem;">
+          <img src="/back-end/images/teddy_1.jpg" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <p>00.00$</p>
+
+        <a href="#" class="btn btn-primary">Add to cart</a>
       </div>
-    </section>
+  </div>
+  </section>
 
-    <!-- footer -->
+  <!-- footer -->
 
-    <footer class="" id="contact">
+  <footer class="" id="contact">
 
-      <a href=""><i class="social-icon fab fa-facebook-f fa-lg"></i></a>
-      <a href=""><i class="social-icon fab fa-twitter fa-lg "></i></a>
-      <a href=""><i class="social-icon fab fa-instagram fa-lg"></i></a>
-    </footer>
+    <a href=""><i class="social-icon fab fa-facebook-f fa-lg"></i></a>
+    <a href=""><i class="social-icon fab fa-twitter fa-lg "></i></a>
+    <a href=""><i class="social-icon fab fa-instagram fa-lg"></i></a>
+  </footer>
 
   </div>
   <!-- Javascript -->
-  <script src=""></script>
+  <script src="script.js"></script>
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

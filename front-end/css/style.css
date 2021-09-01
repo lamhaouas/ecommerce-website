@@ -11,12 +11,21 @@ body {
     line-height: 4rem;
     padding: 50px;
 }
+
+.row{
+    height: 90vh;
+}
 .all-products{
     margin: 25px;
+    ;
+   
     
 }
 .card{
-    border: solid 1px !important;
+    padding: 25px ;
+    border-radius: 25px !important;
+    box-shadow: 0 15px 25px rgb(0, 0, 0, 0.1), 0 15px 25px rgb(0, 0, 0, 0.1);
+
 }
 footer {
     padding: 50px;
