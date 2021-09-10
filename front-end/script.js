@@ -1,9 +1,13 @@
 // get the DATA from the server using fetch and check for the response ok status
+
 function getProducts() {
+
   fetch('http://localhost:3000/api/teddies')
     .then(response => {
       console.log(response)
-      // check for errors
+
+      // check for errors using the ok status
+
       if (!response.ok) {
         throw Error();
       }
@@ -13,31 +17,39 @@ function getProducts() {
 
       console.log(data);
 
+      // map over the array of data
+
+      // convert the price to USD
+      const toUsd = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      })
       const html = data
         .map(teddies => {
           return `
-          <div class="product" id="product">
-          <a href="">
-            <div class="card" style="width: 18rem;">
-              <img src="${teddies.imageUrl}" class="card-img-top" alt="${teddies.name}">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">${teddies.name}</h5>
-            <p class="card-text">${teddies.description}</p>
-            <p>${teddies.price}$</p>
-            <a href="${teddies.name}" class="btn btn-primary">Add to cart</a>
-          </div>
-        </div>
+           <div class=" card p-2 bd-highlight">
+             <a href="">
+               <img src="${teddies.imageUrl}" class="card-img-top" alt="${teddies.name}">
+             </a>
+             <div >
+              <h5>${teddies.name}</h5>
+              <p>${toUsd.format(teddies.price*0.01)}</p>
+              <a href="#" class="btn btn-primary">More details</a>
+             </div>
+            </div>
         `;
         }).join('');
+      //insert the html data into the product div
 
-      document.querySelector('#product').insertAdjacentHTML("afterbegin", html);
+      document.querySelector('#products').insertAdjacentHTML("afterbegin", html);
 
     })
 
     .catch(error => {
-      alert('server is down')
+      document.getElementById("products").innerHTML = "Please try later, Thank you!";
     });
 }
 
+
+//call getProducts function
 getProducts()

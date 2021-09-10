@@ -12,25 +12,28 @@ body {
     padding: 50px;
 }
 
-.row{
+.row {
     height: 90vh;
 }
-.all-products{
+
+.all-products {
     margin: 25px;
-    ;
-   
-    
 }
-.card{
-    padding: 25px ;
+
+.card {
+    padding: 25px;
     border-radius: 25px !important;
+    width: 30vw;
+    margin: 10px;
     box-shadow: 0 15px 25px rgb(0, 0, 0, 0.1), 0 15px 25px rgb(0, 0, 0, 0.1);
 
 }
+
 footer {
     padding: 50px;
     background-color: #D3D3D3;
 }
+
 footer a {
-   color: black;
+    color: black;
 }
