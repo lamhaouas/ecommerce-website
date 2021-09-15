@@ -37,3 +37,13 @@ footer {
 footer a {
     color: black;
 }
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 100vw;
+    }
+    h1{
+        font-size: x-small !important;
+        font-weight: 300 !important;
+    }
+}

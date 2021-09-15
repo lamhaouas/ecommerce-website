@@ -17,9 +17,9 @@ function getProducts() {
 
       console.log(data);
 
-      // map over the array of data
+    // map over the array of data and creat the product cards + add the id key to the url
 
-      // convert the price to USD
+           // convert the price to USD
       const toUsd = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
@@ -27,19 +27,19 @@ function getProducts() {
       const html = data
         .map(teddies => {
           return `
-           <div class=" card p-2 bd-highlight">
-             <a href="">
+           <div class=" card p-2 ">
+             <a href="product.html?id=${teddies._id}">
                <img src="${teddies.imageUrl}" class="card-img-top" alt="${teddies.name}">
              </a>
              <div >
               <h5>${teddies.name}</h5>
               <p>${toUsd.format(teddies.price*0.01)}</p>
-              <a href="#" class="btn btn-primary">More details</a>
+              <a href="product.html?id=${teddies._id}" class="btn btn-primary">More details</a>
              </div>
             </div>
         `;
         }).join('');
-      //insert the html data into the product div
+      //insert the html data into the products div
 
       document.querySelector('#products').insertAdjacentHTML("afterbegin", html);
 
