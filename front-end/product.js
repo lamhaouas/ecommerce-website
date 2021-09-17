@@ -5,18 +5,32 @@ function getParam(parameterKey) {
 }
 
 //fetch product API + id
-fetch('http://localhost:3000/api/teddies/' + getParam("id"))
-    .then(response => {
-        console.log(response)
+function showProduct() {
+    fetch('http://localhost:3000/api/teddies/' + getParam("id"))
+        .then(response => {
 
-        // check for errors using the ok status
+            // check for errors using the ok status
 
-        if (!response.ok) {
-            throw Error();
-        }
-        return response.json();
-    })
-    .then((data) => {
+            if (!response.ok) {
+                throw Error();
+            }
+            return response.json();
+        })
+        .then((data) => {
 
-        console.log(data)
-    })
+            console.log(data)
+
+
+            // creat single product 
+            const productObject = data
+                .map(teddy => {
+                    return ``;
+                }).join('');
+            document.querySelector('#product').insertAdjacentHTML("afterbegin", productObject);
+
+        })
+        .catch(error => {
+            document.getElementById("product").innerHTML = "Please try later, Thank you!";
+        });
+}
+showProduct();

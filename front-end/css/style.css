@@ -42,8 +42,22 @@ footer a {
     .card {
         width: 100vw;
     }
-    h1{
+
+    h1 {
         font-size: x-small !important;
         font-weight: 300 !important;
     }
+}
+
+/* product page css */
+
+.product {
+
+
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    box-shadow: hsl(0, 0%, 81%);
+    padding: 35px;
+    margin: 50px;
 }
