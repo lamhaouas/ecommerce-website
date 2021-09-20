@@ -54,10 +54,10 @@ footer a {
 .product {
 
 
-    background-color: blue;
+    background-color: hsl(0, 0%, 81%);
     color: white;
     border-radius: 15px;
     box-shadow: hsl(0, 0%, 81%);
     padding: 35px;
-    margin: 50px;
+    margin: 50px !important;
 }

@@ -17,20 +17,30 @@ function showProduct() {
             return response.json();
         })
         .then((data) => {
-
-            console.log(data)
-
-
-            // creat single product 
-            const productObject = data
-                .map(teddy => {
-                    return ``;
-                }).join('');
-            document.querySelector('#product').insertAdjacentHTML("afterbegin", productObject);
-
+            // creat single product using jQuery append
+            const teddy = data;
+            console.log(teddy);
+            $('#product').append(`
+            <img class="col-lg-6" src="${teddy.imageUrl}" alt="" >
+            <div class="col-lg-6">
+                <h1>${teddy.name}</h1>
+                <p>${teddy.description}</p>
+                <form id="productForm" action="">
+                    <label id="productLabel" for="">Color</label>
+                    <select name="" id="">
+                        <option value="">${teddy.colors[0]}</option>
+                        <option value="">${teddy.colors[1]}</option>
+                        <option value="">${teddy.colors[2]}</option>
+                        <option value="">${teddy.colors[3]}</option>
+                    </select>
+                </form>
+                <button class=" btn btn-outline-primary" id="addToCart">Add to cart</button>
+            `);
         })
         .catch(error => {
             document.getElementById("product").innerHTML = "Please try later, Thank you!";
         });
 }
+
+// call the showProduct function
 showProduct();
