@@ -108,7 +108,7 @@ function showProduct() {
             // call addToCart function
 
             addToCart()
-            // call onLoadCartNumbers function
+            // call onLoadCartNumbers onfunction
             onLoadCartNumbers()
 
         })
