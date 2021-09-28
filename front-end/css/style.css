@@ -1,6 +1,11 @@
 nav {
-    background-color: #D3D3D3;
+    background-color: #f3ebf3;
 }
+
+.fa-shopping-cart:hover {
+    color: #a164ce !important;
+}
+
 
 body {
     text-align: center !important;
@@ -29,14 +34,27 @@ body {
 
 }
 
+.card img {
+    border-radius: 25px;
+}
+
+.btn {
+    background-color: black !important;
+    border: none !important;
+    color: white !important;
+}
+
 footer {
     padding: 50px;
-    background-color: #D3D3D3;
+    background-color: #f3ebf3;
+    
 }
 
 footer a {
     color: black;
 }
+
+
 
 @media only screen and (max-width: 600px) {
     .card {
@@ -54,10 +72,34 @@ footer a {
 .product {
 
 
-    background-color: hsl(0, 0%, 81%);
-    color: white;
-    border-radius: 15px;
-    box-shadow: hsl(0, 0%, 81%);
-    padding: 35px;
-    margin: 50px !important;
+    background-color: #a164ce;
+    color: black;
+    padding: 80px;
+    display: flex;
+    justify-content: center;
+    height: auto;
+
+
+}
+
+.product img {
+    border-radius: 25px;
+
+}
+
+/* cart page css */
+.details {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.validation-form {
+
+    background-color: #a164ce;
+
+    margin: 100px;
+
+    border-radius: 25px;
 }

@@ -5,6 +5,8 @@ function getParam(parameterKey) {
 }
 
 //fetch product API + id
+
+
 function showProduct() {
     fetch('http://localhost:3000/api/teddies/' + getParam("id"))
         .then(response => {
@@ -18,59 +20,91 @@ function showProduct() {
         })
         .then((data) => {
             console.log(data)
-            // creat single product using jQuery append
-            const teddy = data;
-
+            teddy = data;
+            // create a function to show selected product 
             function createProduct() {
 
                 const productImage = document.getElementById('product-img');
                 const productTiltle = document.getElementById('product-title');
                 const productDesc = document.getElementById('product-description');
-                const optionOne = document.getElementById('option-0');
-                const optionTwo = document.getElementById('option-1');
-                const optionThree = document.getElementById('option-2');
-                const optionFour = document.getElementById('option-3');
+                const colors = document.getElementById('select');
+                const price = document.getElementById('price');
+                let color = data.colors;
 
                 productImage.setAttribute('src', teddy.imageUrl);
                 productTiltle.innerHTML = teddy.name;
                 productDesc.innerHTML = teddy.description;
-                optionOne.innerHTML = teddy.colors[0];
-                optionTwo.innerHTML = teddy.colors[1];
-                optionThree.innerHTML = teddy.colors[2];
-                optionFour.innerHTML = teddy.colors[3];
+                // convert the price to $ 00.00 format
+                const toUsd = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                });
+                // convert price data to a string and substring the first 2 numbers  
+                let priceToString = teddy.price.toString();
+                let thePrice = priceToString.substring(0, 2);
+                // update html with the price new format
+                price.innerHTML = toUsd.format(thePrice);
+                // colors options 
+                for (let i in color) {
+                    const teddyColor = document.createElement("option");
+                    teddyColor.textContent = color[i];
+                    colors.appendChild(teddyColor);
+                }
+
             }
-            // call the creat product function
+
+
+            // call the createProduct function
             createProduct()
 
-            //-----------------------------------------------------------------------------------------------------------
+            // create a function to store product when clicking on add to cart to localestorage
+            function addToCart() {
+                //access the DOM
+                const addToCartBtn = document.getElementById('add-to-cart');
+                //add event listener
 
-            // creat single product using jQuery append
-            // const teddy = data;
-            // console.log(teddy);
-            // $('#product').append(`
-            // <img class="col-lg-6" src="${teddy.imageUrl}" alt="" >
-            // <div class="col-lg-6">
-            //     <h1>${teddy.name}</h1>
-            //     <p>${teddy.description}</p>
-            //     <form id="productForm" action="">
-            //         <label id="productLabel" for="">Color</label>
-            //         <select name="" id="">
-            //             <option value="">${teddy.colors[0]}</option>
-            //             <option value="">${teddy.colors[1]}</option>
-            //             <option value="">${teddy.colors[2]}</option>
-            //             <option value="">${teddy.colors[3]}</option>
-            //         </select>
-            //     </form>
-            //     <button class=" btn btn-outline-primary" id="addToCart">Add to cart</button>
-            // `);
-            //-----------------------------------------------------------------------------------------------------------
+                addToCartBtn.addEventListener('click', () => {
+                    let teddyColor = document.getElementById('select');
+                    let productInCart = {
+                        imageUrl: teddy.imageUrl,
+                        name: teddy.name,
+                        colors: teddyColor.value,
+                        price: teddy.price,
+                    };
+                    let productsInCart = [];
+                    productsInCart.push(productInCart);
+                    localStorage.setItem('productInCart', JSON.stringify(productInCart)); // convert object to string
 
+                    // count the number of products in cart and update the span content
+                    function cartNumbers() {
+                        let numberOfProducts = localStorage.getItem('numberOfProducts');
+                        console.log(typeof numberOfProducts);
+                        numberOfProducts = parseInt(numberOfProducts); // convert the string to number
+                        if (numberOfProducts) {
+                            localStorage.setItem('numberOfProducts', numberOfProducts + 1);
+                            document.getElementById('count').textContent = numberOfProducts + 1;
+                        } else {
+                            localStorage.setItem('numberOfProducts', 1);
+                            
+                            document.getElementById('count').textContent = 1;
+                        }
+
+                    }
+                    cartNumbers()
+
+                })
+
+
+            }
+            // call addToCart function
+            addToCart()
 
         })
         .catch(error => {
             document.getElementById("product").innerHTML = "Please try later, Thank you!";
         });
 }
+
 
 // call the showProduct function
 showProduct();
