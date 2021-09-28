@@ -75,7 +75,7 @@ function showProduct() {
                     productsInCart.push(productInCart);
                     localStorage.setItem('productInCart', JSON.stringify(productInCart)); // convert object to string
 
-                    // count the number of products in cart and update the span content
+                    // count the number of products in cart and   the span content
                     function cartNumbers() {
                         let numberOfProducts = localStorage.getItem('numberOfProducts');
                         console.log(typeof numberOfProducts);
@@ -85,7 +85,7 @@ function showProduct() {
                             document.getElementById('count').textContent = numberOfProducts + 1;
                         } else {
                             localStorage.setItem('numberOfProducts', 1);
-                            
+
                             document.getElementById('count').textContent = 1;
                         }
 
@@ -96,8 +96,20 @@ function showProduct() {
 
 
             }
+            //create function onLoadCartNumbers to sync the cartNumbers with the number of products in localstorage
+
+            function onLoadCartNumbers() {
+                let numberOfProducts = localStorage.getItem('numberOfProducts');
+                if (numberOfProducts) {
+                    document.getElementById('count').textContent = numberOfProducts;
+                }
+
+            }
             // call addToCart function
+
             addToCart()
+            // call onLoadCartNumbers function
+            onLoadCartNumbers()
 
         })
         .catch(error => {
