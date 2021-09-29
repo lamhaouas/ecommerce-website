@@ -6,13 +6,10 @@ function getParam(parameterKey) {
 
 //fetch product API + id
 
-
 function showProduct() {
     fetch('http://localhost:3000/api/teddies/' + getParam("id"))
         .then(response => {
-
             // check for errors using the ok status
-
             if (!response.ok) {
                 throw Error();
             }
@@ -23,14 +20,12 @@ function showProduct() {
             teddy = data;
             // create a function to show selected product 
             function createProduct() {
-
                 const productImage = document.getElementById('product-img');
                 const productTiltle = document.getElementById('product-title');
                 const productDesc = document.getElementById('product-description');
                 const colors = document.getElementById('select');
                 const price = document.getElementById('price');
                 let color = data.colors;
-
                 productImage.setAttribute('src', teddy.imageUrl);
                 productTiltle.innerHTML = teddy.name;
                 productDesc.innerHTML = teddy.description;
@@ -50,73 +45,70 @@ function showProduct() {
                     teddyColor.textContent = color[i];
                     colors.appendChild(teddyColor);
                 }
-
             }
-
-
             // call the createProduct function
             createProduct()
 
+
+
             // create a function to store product when clicking on add to cart to localestorage
+
+
             function addToCart() {
                 //access the DOM
                 const addToCartBtn = document.getElementById('add-to-cart');
                 //add event listener
 
                 addToCartBtn.addEventListener('click', () => {
-                    let teddyColor = document.getElementById('select');
-                    let productInCart = {
-                        imageUrl: teddy.imageUrl,
-                        name: teddy.name,
-                        colors: teddyColor.value,
-                        price: teddy.price,
-                    };
+                    //store the product data into localstorage
                     let productsInCart = [];
-                    productsInCart.push(productInCart);
-                    localStorage.setItem('productInCart', JSON.stringify(productInCart)); // convert object to string
+                    let teddyColor = document.getElementById('select');
+                    //check if local storage is empty and push a new product into localstorage
+                    let product = {
+                        productId: teddy._id,
+                        productQuantity: 1,
+                        productColor: teddyColor.value
+                    };
 
-                    // count the number of products in cart and   the span content
+                    if (localStorage.getItem('cart') === null) {
+                        productsInCart;
+
+                    } else {
+                        productsInCart = JSON.parse(localStorage.getItem('cart'));
+
+                    }
+
+
+
+                    productsInCart.push(product);
+                    localStorage.setItem('cart', JSON.stringify(productsInCart));
+
+
+
+
+
+                    cartNumbers();
+
+                    // count the number of products in cart and  update the span content
                     function cartNumbers() {
                         let numberOfProducts = localStorage.getItem('numberOfProducts');
-                        console.log(typeof numberOfProducts);
                         numberOfProducts = parseInt(numberOfProducts); // convert the string to number
                         if (numberOfProducts) {
                             localStorage.setItem('numberOfProducts', numberOfProducts + 1);
                             document.getElementById('count').textContent = numberOfProducts + 1;
                         } else {
                             localStorage.setItem('numberOfProducts', 1);
-
                             document.getElementById('count').textContent = 1;
                         }
-
                     }
-                    cartNumbers()
-
                 })
-
-
-            }
-            //create function onLoadCartNumbers to sync the cartNumbers with the number of products in localstorage
-
-            function onLoadCartNumbers() {
-                let numberOfProducts = localStorage.getItem('numberOfProducts');
-                if (numberOfProducts) {
-                    document.getElementById('count').textContent = numberOfProducts;
-                }
-
             }
             // call addToCart function
-
             addToCart()
-            // call onLoadCartNumbers onfunction
-            onLoadCartNumbers()
-
         })
         .catch(error => {
             document.getElementById("product").innerHTML = "Please try later, Thank you!";
         });
 }
-
-
 // call the showProduct function
 showProduct();

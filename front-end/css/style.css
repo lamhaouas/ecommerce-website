@@ -47,7 +47,7 @@ body {
 footer {
     padding: 50px;
     background-color: #f3ebf3;
-    
+
 }
 
 footer a {
@@ -74,7 +74,7 @@ footer a {
 
     background-color: #a164ce;
     color: black;
-    padding: 80px;
+
     display: flex;
     justify-content: center;
     height: auto;
@@ -87,19 +87,12 @@ footer a {
 
 }
 
+@media only screen and (max-width: 900px) {
+    .card {
+        width: 60vw !important;
+    }
+
+}
+
+
 /* cart page css */
-.details {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.validation-form {
-
-    background-color: #a164ce;
-
-    margin: 100px;
-
-    border-radius: 25px;
-}
