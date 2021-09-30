@@ -6,7 +6,7 @@ function cartProducts() {
     const cartContent = document.getElementById('cart-content');
     let cartArray = JSON.parse(localStorage.getItem('cart'));
     console.log(typeof cartArray);
-    cartContent.innerHTML = cartArray[10].productColor;
+    cartContent.innerHTML = cartArray[0].productColor;
 }
 
 cartProducts();
