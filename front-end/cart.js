@@ -1,7 +1,7 @@
 console.log('test')
 
 // display the cart’s contents 
-function cartProducts() {
+function displayCart() {
 
     const cartContent = document.getElementById('cart-content');
     let cartArray = JSON.parse(localStorage.getItem('cart'));
@@ -9,4 +9,4 @@ function cartProducts() {
     cartContent.innerHTML = cartArray[0].productColor;
 }
 
-cartProducts();
+displayCart();

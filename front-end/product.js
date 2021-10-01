@@ -22,6 +22,8 @@ function showProduct() {
             createProduct(teddy);
             addToCart(teddy);
 
+
+
         })
         .catch(error => {
             document.getElementById("product").innerHTML = "Please try later, Thank you!";
@@ -53,8 +55,6 @@ function createProduct(teddy) {
         teddyColor.textContent = color[i];
         colors.appendChild(teddyColor);
     }
-
-
 }
 // create a function to store product when clicking on add to cart to localestorage
 
@@ -71,42 +71,29 @@ function addToCart(teddy) {
             productColor: teddyColor.value
         };
 
-        if (localStorage.getItem('cart') === null) {
 
-
-        } else {
+        if (localStorage.getItem('cart') !== null) {
             productsInCart = JSON.parse(localStorage.getItem('cart'));
-
-        }
-
-
+        };
 
         productsInCart.push(product);
         localStorage.setItem('cart', JSON.stringify(productsInCart));
 
-
-
-
-
-        // call cartNumbers function when clicking on add to cart
-        cartNumbers(teddy);
+        cartNumbers();
 
     })
 
 }
+
 // count the number of products in cart and  update the span content
+// the function needs to be called twice: 1-inside add event listener 2- show product function
 
 function cartNumbers() {
-    let numberOfProducts = localStorage.getItem('numberOfProducts');
-    numberOfProducts = parseInt(numberOfProducts); // convert the string to number
-    if (numberOfProducts) {
-        localStorage.setItem('numberOfProducts', numberOfProducts + 1);
-        document.getElementById('count').textContent = numberOfProducts + 1;
-    } else {
-        localStorage.setItem('numberOfProducts', 1);
-        document.getElementById('count').textContent = 1;
-    }
+    let productInLocalStorage = localStorage.getItem('cart');
+    let productArray = JSON.parse(productInLocalStorage);
+    document.getElementById('count').innerHTML = productArray.length;
 }
+
 
 // call the showProduct function
 showProduct();

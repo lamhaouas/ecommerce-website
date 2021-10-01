@@ -48,60 +48,60 @@
             </div>
         </div>
     </nav>
-    <section class="cart">
-        <h1>Cart details</h1>
-        <div id="cart-content"></div>
-        <h2>Validation Form</h2>
-        <form class="validation-form row g-3 needs-validation" novalidate>
-            <div class="col-md-2">
-                <label for="validationCustom01" class="form-label">First name</label>
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="col-md-2">
-                <label for="validationCustom02" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="validationCustom02" required>
-            </div>
-            <div class="col-md-4">
-                <label for="validationCustom01" class="form-label">E-mail</label>
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="col-md-3">
-                <label for="validationCustomUsername" class="form-label">Street address</label>
-                <div class="input-group has-validation">
-                    <input type="text" class="form-control" aria-describedby="inputGroupPrepend" required>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="validationCustom03" class="form-label">City</label>
-                <input type="text" class="form-control" required>
+    <section class="cart d-flex justify-content-evenly">
+        <div class="card">
+            <h1 class="text-center">Cart details</h1>
+            <div id="cart-content">
 
+                
             </div>
-            <div class="col-md-2">
-                <label for="validationCustom04" class="form-label">State</label>
-                <input class="form-control" required>
-
-                </input>
-
+        </div>
+        <div class="d-flex justify-content-evenly">
+            <div class="card">
+                <form class="validation-form row p-5" novalidate>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">First name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="validationCustom02" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label for="validationCustom01" class="form-label">E-mail</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-10">
+                        <label for="validationCustomUsername" class="form-label">Street address</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" aria-describedby="inputGroupPrepend" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom03" class="form-label">City</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="validationCustom04" class="form-label">State</label>
+                        <input class="form-control" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="validationCustom05" class="form-label">Zip</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="">
+                        <button class="btn btn-primary" type="submit">Submit my order</button>
+                    </div>
+                </form>
             </div>
-            <div class="col-md-2">
-                <label for="validationCustom05" class="form-label">Zip</label>
-                <input type="text" class="form-control" required>
-
-            </div>
-
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit">Submit form</button>
-            </div>
-        </form>
 
     </section>
 
 
-    <footer id="footer">
-
-        <i class="social-icon fab fa-facebook-f"></i>
-        <i class="social-icon fab fa-twitter"></i>
-        <i class="social-icon fab fa-instagram"></i>
+    <footer class="d-flex justify-content-center" id="contact">
+        <a href="https://www.facebook.com" target="_blank"><i class="social-icon fab fa-facebook-f fa-lg"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="social-icon fab fa-twitter fa-lg "></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="social-icon fab fa-instagram fa-lg"></i></a>
     </footer>
     <!-- Javascript -->
     <script src="cart.js"></script>
