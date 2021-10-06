@@ -24,8 +24,9 @@ function getProducts() {
         style: 'currency',
         currency: 'USD'
       });
-
+      console.log(typeof data);
       const html = data
+
         .map(teddies => {
           // convert price data to a string and substring the first 2 numbers  
           let priceToString = teddies.price.toString();
@@ -58,3 +59,10 @@ function getProducts() {
 
 //call getProducts function
 getProducts()
+
+function cartNumbers() {
+  let productInLocalStorage = localStorage.getItem('cart');
+  let productArray = JSON.parse(productInLocalStorage);
+  document.getElementById('count').innerHTML = productArray.length;
+}
+cartNumbers()

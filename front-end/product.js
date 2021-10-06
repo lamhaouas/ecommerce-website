@@ -20,9 +20,6 @@ function showProduct() {
             teddy = data;
             // call the functions
             createProduct(teddy);
-            addToCart(teddy);
-
-
 
         })
         .catch(error => {
@@ -56,37 +53,40 @@ function createProduct(teddy) {
         colors.appendChild(teddyColor);
     }
 }
-// create a function to store product when clicking on add to cart to localestorage
+// create an eventlistener to store product when clicking on add to cart to localestorage
 
-function addToCart(teddy) {
-    const addToCartBtn = document.getElementById('add-to-cart');
-    addToCartBtn.addEventListener('click', () => {
-        //store the product data into localstorage
-        let productsInCart = [];
-        let teddyColor = document.getElementById('select');
-        //check if local storage is empty and push a new product into localstorage
-        let product = {
-            productId: teddy._id,
-            productQuantity: 1,
-            productColor: teddyColor.value
-        };
+const addToCartBtn = document.getElementById('add-to-cart');
+addToCartBtn.addEventListener('click', () => {
+
+    //store the product data into localstorage
+    let productsInCart = [];
+    let teddyColor = document.getElementById('select');
+    let product = {
+        productName: teddy.name,
+        productId: teddy._id,
+        productPrice: teddy.price,
+        Quantity: 0,
+        productColor: teddyColor.value,
+        productImage: teddy.imageUrl
+    };
 
 
-        if (localStorage.getItem('cart') !== null) {
-            productsInCart = JSON.parse(localStorage.getItem('cart'));
-        };
+    //check if local storage is empty and push a new product into localstorage
 
-        productsInCart.push(product);
-        localStorage.setItem('cart', JSON.stringify(productsInCart));
+    if (localStorage.getItem('cart') !== null) {
+        productsInCart = JSON.parse(localStorage.getItem('cart'));
+    };
 
-        cartNumbers();
+    productsInCart.push(product);
+    localStorage.setItem('cart', JSON.stringify(productsInCart));
 
-    })
+  
 
-}
+    cartNumbers();
+});
 
 // count the number of products in cart and  update the span content
-// the function needs to be called twice: 1-inside add event listener 2- show product function
+// the function needs to be called twice
 
 function cartNumbers() {
     let productInLocalStorage = localStorage.getItem('cart');
@@ -94,6 +94,6 @@ function cartNumbers() {
     document.getElementById('count').innerHTML = productArray.length;
 }
 
-
 // call the showProduct function
 showProduct();
+cartNumbers()

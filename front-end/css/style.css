@@ -1,3 +1,7 @@
+* {
+    font-family: 'Montserrat';
+}
+
 nav {
     background-color: #f3ebf3;
 }
@@ -5,6 +9,7 @@ nav {
 .fa-shopping-cart:hover {
     color: #a164ce !important;
 }
+
 
 
 
@@ -76,7 +81,7 @@ footer a {
 
 @media only screen and (max-width: 900px) {
     .card {
-        width: 60vw !important;
+        width: 80vw !important;
     }
 
 }
@@ -85,7 +90,28 @@ footer a {
 /* cart page css */
 .cart {
     background-color: #a164ce;
-    padding: 50px;
-     
-    
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+
+
+
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    width: 100%;
+}
+
+
+
+th,
+td {
+    width: 100px;
+    text-align: center;
+
+    padding: 5px;
 }
