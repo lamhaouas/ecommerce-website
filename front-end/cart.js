@@ -7,7 +7,9 @@ function cartIsEmpty() {
         emptyCart.innerHTML = "Your cart is empty"
     }
 }
+
 cartIsEmpty()
+
 // display the cart’s contents 
 function displayCart() {
     let localStorageItems = JSON.parse(localStorage.getItem('cart'));
@@ -38,6 +40,7 @@ function displayCart() {
         tr.append(thName, thColor, thPrice, removeButton)
         table.append(tr)
     }
+    cartNumbers()
 }
 displayCart();
 //count the product in cart
@@ -51,4 +54,5 @@ function removeProduct(index) {
     let localStorageItems = JSON.parse(localStorage.getItem('cart'));
     localStorageItems.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(localStorageItems));
+    window.location.reload();
 };
