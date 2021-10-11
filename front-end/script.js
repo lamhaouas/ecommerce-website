@@ -30,7 +30,7 @@ function getProducts() {
         .map(teddies => {
           // convert price data to a string and substring the first 2 numbers  
           let priceToString = teddies.price.toString();
-          let thePrice = priceToString.substring(0, 2);
+          let thePrice = priceToString.slice(0, 2);
           return `
            <div class=" card p-2 ">
              <a href="product.html?id=${teddies._id}">
@@ -60,9 +60,9 @@ function getProducts() {
 //call getProducts function
 getProducts()
 
-function cartNumbers() {
+function cartCount() {
   let productInLocalStorage = localStorage.getItem('cart');
   let productArray = JSON.parse(productInLocalStorage);
   document.getElementById('count').innerHTML = productArray.length;
 }
-cartNumbers()
+cartCount();

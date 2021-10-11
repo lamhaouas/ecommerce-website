@@ -44,7 +44,7 @@ function createProduct(teddy) {
         currency: 'USD'
     });
     let priceToString = teddy.price.toString();
-    let thePrice = priceToString.substring(0, 2);
+    let thePrice = priceToString.slice(0, 2);
     price.innerHTML = toUsd.format(thePrice);
     // colors options 
     for (let i in color) {
@@ -65,35 +65,26 @@ addToCartBtn.addEventListener('click', () => {
         productName: teddy.name,
         productId: teddy._id,
         productPrice: teddy.price,
-        Quantity: 0,
         productColor: teddyColor.value,
-        productImage: teddy.imageUrl
     };
-
-
     //check if local storage is empty and push a new product into localstorage
-
     if (localStorage.getItem('cart') !== null) {
         productsInCart = JSON.parse(localStorage.getItem('cart'));
     };
-
     productsInCart.push(product);
     localStorage.setItem('cart', JSON.stringify(productsInCart));
-
-  
-
-    cartNumbers();
+    // call the cartNumbers() and total()
+    cartCount();
 });
 
 // count the number of products in cart and  update the span content
-// the function needs to be called twice
-
-function cartNumbers() {
+function cartCount() {
     let productInLocalStorage = localStorage.getItem('cart');
-    let productArray = JSON.parse(productInLocalStorage);
-    document.getElementById('count').innerHTML = productArray.length;
+    let localStorageArray = JSON.parse(productInLocalStorage);
+    document.getElementById('count').innerHTML = localStorageArray.length;
 }
+
 
 // call the showProduct function
 showProduct();
-cartNumbers()
+cartCount();

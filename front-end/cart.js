@@ -2,47 +2,53 @@
 function cartIsEmpty() {
     let emptyCart = document.getElementById('cart-is-emty');
     let productInLocalStorage = localStorage.getItem('cart');
-    if (productInLocalStorage === null) {
+    productInLocalStorage = JSON.parse(productInLocalStorage)
+    if (productInLocalStorage === null || productInLocalStorage.length === 0) {
         emptyCart.innerHTML = "Your cart is empty"
     }
 }
 cartIsEmpty()
 // display the cart’s contents 
 function displayCart() {
-    let localStorageArray = JSON.parse(localStorage.getItem('cart'));
-    console.log(localStorageArray);
+    let localStorageItems = JSON.parse(localStorage.getItem('cart'));
+    // convert the price to $ 00.00 format
+    const toUsd = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+    for (let i = 0; i < localStorageItems.length; i++) {
+        //create elements of table 
+        let table = document.getElementById('cart-content')
+        let tr = document.createElement('tr');
+        let thName = document.createElement('th');
+        let thColor = document.createElement('th');
+        let thPrice = document.createElement('th');
+        let removeButton = document.createElement('th');
 
-    const objectData = localStorageArray
-        .map(localStorageArray => {
+        let priceToString = localStorageItems[i].productPrice.toString();
+        let splicedPrice = priceToString.slice(0, 2);
 
-            return `<tr>
-                       <th>${localStorageArray.productName}</th>
-                       <th>${localStorageArray.productColor}</th>
-                        <th><input style="width:40px;" type="number" name=""
-                            min="1" max="10"></th>
-                        <th><button id="remove-button" type="button" class="btn" style="width:35px;" onclick='removeItem()'>X</button></th>
-                    </tr>`;
-        }).join('');
+        thName.innerHTML = localStorageItems[i].productName;
+        thColor.innerHTML = localStorageItems[i].productColor;
+        thPrice.innerHTML = toUsd.format(splicedPrice);
+        removeButton.innerHTML = `<button id="remove-button" type="button" class="btn bg-danger" onclick=' removeProduct(${i})' style="width:40px;"><i
+        class="fas fa-trash-alt"></i></button>`;
 
-    document.querySelector('#cart-content').insertAdjacentHTML("beforeend", objectData);
-
+        //append elements to tr
+        tr.append(thName, thColor, thPrice, removeButton)
+        table.append(tr)
+    }
 }
-
 displayCart();
-
 //count the product in cart
 function cartNumbers() {
-    let productInLocalStorage = localStorage.getItem('cart');
-    let localStorageArray = JSON.parse(productInLocalStorage);
+    let localStorageItems = localStorage.getItem('cart');
+    let localStorageArray = JSON.parse(localStorageItems);
     document.getElementById('count').innerHTML = localStorageArray.length;
 }
-cartNumbers()
-
 // remove single item from cart
-function removeItem(i) {
-
-    let localStorageArray = JSON.parse(localStorage.getItem('cart'));
-    let productIndex = i
-    localStorageArray.splice(productIndex, 1);
-    localStorage.setItem('cart', JSON.stringify(localStorageArray));
-}
+function removeProduct(index) {
+    let localStorageItems = JSON.parse(localStorage.getItem('cart'));
+    localStorageItems.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(localStorageItems));
+};

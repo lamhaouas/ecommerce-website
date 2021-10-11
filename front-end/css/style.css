@@ -10,10 +10,6 @@ nav {
     color: #a164ce !important;
 }
 
-
-
-
-
 .head-title {
     font-size: 2.5rem !important;
     line-height: 4rem;
@@ -32,7 +28,7 @@ nav {
     padding: 25px;
     border-radius: 25px !important;
     width: 30vw;
-    margin: 10px;
+   
     box-shadow: 0 15px 25px rgb(0, 0, 0, 0.1), 0 15px 25px rgb(0, 0, 0, 0.1);
 
 }
@@ -50,7 +46,6 @@ nav {
 footer {
     padding: 50px;
     background-color: #f3ebf3;
-
 }
 
 footer a {
@@ -66,10 +61,10 @@ footer a {
 
     background-color: #a164ce;
     color: black;
-
     display: flex;
     justify-content: center;
     height: auto;
+    padding: 15px;
 
 
 }
