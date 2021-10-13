@@ -25,6 +25,7 @@ function displayCart() {
         let thName = document.createElement('th');
         let thColor = document.createElement('th');
         let thPrice = document.createElement('th');
+        thPrice.className = 'product-price'
         let removeButton = document.createElement('th');
 
         let priceToString = localStorageItems[i].productPrice.toString();
@@ -35,7 +36,6 @@ function displayCart() {
         thPrice.innerHTML = toUsd.format(splicedPrice);
         removeButton.innerHTML = `<button id="remove-button" type="button" class="btn bg-danger" onclick=' removeProduct(${i})' style="width:40px;"><i
         class="fas fa-trash-alt"></i></button>`;
-
         //append elements to tr
         tr.append(thName, thColor, thPrice, removeButton)
         table.append(tr)
@@ -56,3 +56,25 @@ function removeProduct(index) {
     localStorage.setItem('cart', JSON.stringify(localStorageItems));
     window.location.reload();
 };
+// total cost of the products in cart
+
+
+
+//---------------------------------------------------------------------------------------------------------------------
+(function () {
+    'use strict'
+    const forms = document.querySelectorAll('.requires-validation')
+    Array.from(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+
+// validation form

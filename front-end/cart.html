@@ -55,7 +55,7 @@
             <h1 class="text-center">Cart details</h1>
             <div id="cart-is-emty"></div>
             <table id="cart-content">
-                
+
             </table>
             <br>
             <h3 id="total-cost"></h3>
@@ -64,36 +64,79 @@
         </div>
 
         <div class="card" style="width: 40rem;">
-            <form class="validation-form row" novalidate>
+            <form class="validation-form row  requires-validation" method="post" novalidate>
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">First name</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" placeholder="Joe" class="form-control" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
+
+
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom02" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="validationCustom02" required>
+                    <input type="text" placeholder="Doe" class="form-control" id="validationCustom02" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="col-md-10">
                     <label for="validationCustom01" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" required>
+                    <input type="email" placeholder="exemple@exemple.com" class="form-control" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="col-md-10">
                     <label for="validationCustomUsername" class="form-label">Street address</label>
-                    <div class="input-group has-validation">
-                        <input type="text" class="form-control" aria-describedby="inputGroupPrepend" required>
+                    <input type="text" placeholder="123 street " class="form-control"
+                        aria-describedby="inputGroupPrepend" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">City</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" placeholder="New York" class="form-control" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <label for="validationCustom04" class="form-label">State</label>
-                    <input class="form-control" required>
+                    <input class="form-control" placeholder="VA" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom05" class="form-label">Zip</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" placeholder="00-000" class="form-control" required>
+                    <div class="valid-feedback">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback">
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="">
                     <button class="btn btn-primary" type="submit">Submit my order</button>
