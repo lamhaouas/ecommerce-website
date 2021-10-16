@@ -84,7 +84,6 @@ function cartCount() {
     document.getElementById('count').innerHTML = localStorageArray.length;
 }
 
-
 // call the showProduct function
 showProduct();
 cartCount();

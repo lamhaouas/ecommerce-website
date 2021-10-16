@@ -25,7 +25,7 @@ function displayCart() {
         let thName = document.createElement('th');
         let thColor = document.createElement('th');
         let thPrice = document.createElement('th');
-        thPrice.className = 'product-price'
+        thPrice.className = 'product-price';
         let removeButton = document.createElement('th');
 
         let priceToString = localStorageItems[i].productPrice.toString();
@@ -57,14 +57,30 @@ function removeProduct(index) {
     window.location.reload();
 };
 // total cost of the products in cart
+let cart = JSON.parse(localStorage.getItem('cart'));
+let total = 0
+for (let i = 0; i < cart.length; i += 1) {
+    console.log(cart[i].productPrice)
+    total += cart[i].productPrice
+}
+let priceToString = total.toString();
+let splicedPrice = priceToString.slice(0, -2);
 
+
+let totalCost = document.getElementById('total-cost')
+totalCost.innerHTML = 'Your total price is: ' + '$ ' + splicedPrice + ',00';
 
 
 //---------------------------------------------------------------------------------------------------------------------
+// validation form
 (function () {
     'use strict'
-    const forms = document.querySelectorAll('.requires-validation')
-    Array.from(forms)
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.requires-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
@@ -76,5 +92,3 @@ function removeProduct(index) {
             }, false)
         })
 })()
-
-// validation form
