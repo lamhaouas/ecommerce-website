@@ -18,36 +18,40 @@ function displayCart() {
         style: 'currency',
         currency: 'USD'
     });
-    for (let i = 0; i < localStorageItems.length; i++) {
-        //create elements of table 
-        let table = document.getElementById('cart-content')
-        let tr = document.createElement('tr');
-        let thName = document.createElement('th');
-        let thColor = document.createElement('th');
-        let thPrice = document.createElement('th');
-        thPrice.className = 'product-price';
-        let removeButton = document.createElement('th');
+    if (localStorageItems !== null) {
+        for (let i = 0; i < localStorageItems.length; i++) {
+            //create elements of table 
+            let table = document.getElementById('cart-content')
+            let tr = document.createElement('tr');
+            let thName = document.createElement('th');
+            let thColor = document.createElement('th');
+            let thPrice = document.createElement('th');
+            thPrice.className = 'product-price';
+            let removeButton = document.createElement('th');
 
-        let priceToString = localStorageItems[i].productPrice.toString();
-        let splicedPrice = priceToString.slice(0, 2);
+            let priceToString = localStorageItems[i].productPrice.toString();
+            let splicedPrice = priceToString.slice(0, 2);
 
-        thName.innerHTML = localStorageItems[i].productName;
-        thColor.innerHTML = localStorageItems[i].productColor;
-        thPrice.innerHTML = toUsd.format(splicedPrice);
-        removeButton.innerHTML = `<button id="remove-button" type="button" class="btn bg-danger" onclick=' removeProduct(${i})' style="width:40px;"><i
+            thName.innerHTML = localStorageItems[i].productName;
+            thColor.innerHTML = localStorageItems[i].productColor;
+            thPrice.innerHTML = toUsd.format(splicedPrice);
+            removeButton.innerHTML = `<button id="remove-button" type="button" class="btn bg-danger" onclick=' removeProduct(${i})' style="width:40px;"><i
         class="fas fa-trash-alt"></i></button>`;
-        //append elements to tr
-        tr.append(thName, thColor, thPrice, removeButton)
-        table.append(tr)
+            //append elements to tr
+            tr.append(thName, thColor, thPrice, removeButton)
+            table.append(tr)
+        }
+        cartNumbers()
     }
-    cartNumbers()
 }
 displayCart();
 //count the product in cart
 function cartNumbers() {
     let localStorageItems = localStorage.getItem('cart');
     let localStorageArray = JSON.parse(localStorageItems);
-    document.getElementById('count').innerHTML = localStorageArray.length;
+    if (localStorageItems !== null) {
+        document.getElementById('count').innerHTML = localStorageArray.length;
+    }
 }
 // remove single item from cart
 function removeProduct(index) {
@@ -59,36 +63,66 @@ function removeProduct(index) {
 // total cost of the products in cart
 let cart = JSON.parse(localStorage.getItem('cart'));
 let total = 0
-for (let i = 0; i < cart.length; i += 1) {
-    console.log(cart[i].productPrice)
-    total += cart[i].productPrice
+if (cart !== null) {
+    for (let i = 0; i < cart.length; i += 1) {
+        total += cart[i].productPrice
+    }
+    let priceToString = total.toString();
+    let splicedPrice = priceToString.slice(0, -2);
+
+
+    let totalCost = document.getElementById('total-cost')
+    totalCost.innerHTML = '$ ' + splicedPrice + '.00';
 }
-let priceToString = total.toString();
-let splicedPrice = priceToString.slice(0, -2);
-
-
-let totalCost = document.getElementById('total-cost')
-totalCost.innerHTML = 'Your total price is: ' + '$ ' + splicedPrice + ',00';
 
 
 //---------------------------------------------------------------------------------------------------------------------
-// validation form
-(function () {
-    'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.requires-validation')
+// Post data (contact object + products array) to the backend
+let submit = document.getElementById('submit-order');
+let firstName = document.getElementById('first-name');
+let lastName = document.getElementById('last-name');
+let eMail = document.getElementById('e-mail');
+let address = document.getElementById('address');
+let city = document.getElementById('city');
 
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
+let products = [];
+let cartArray = JSON.parse(localStorage.getItem('cart'));
+submit.addEventListener('click', () => {
+    for (let i = 0; i < cartArray.length; i++) {
+        products.push(cartArray[i].productId);
+    }
+    let contact = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: eMail.value,
+        address: address.value,
+        city: city.value,
+    };
+    let data = {
+        contact: contact,
+        products: products,
+    }
+    makeRequest(data)
+})
 
-                form.classList.add('was-validated')
-            }, false)
-        })
-})()
+function makeRequest(data) {
+    fetch('http://localhost:3000/api/teddies/order', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+
+        },
+
+        body: JSON.stringify(data)
+    }).then((res) => {
+        return res.json();
+    }).then((response) => {
+        localStorage.setItem('contact', JSON.stringify(response.contact));
+        localStorage.setItem('orderid', JSON.stringify(response.orderId));
+        window.location.replace('confirmation.html');
+    }).catch((err) => {
+        console.log(err);
+    })
+};

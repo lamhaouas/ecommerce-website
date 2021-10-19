@@ -4,27 +4,20 @@ function getProducts() {
 
   fetch('http://localhost:3000/api/teddies')
     .then(response => {
-      console.log(response)
-
       // check for errors using the ok status
-
       if (!response.ok) {
         throw Error();
       }
       return response.json();
     })
     .then((data) => {
-
-      console.log(data);
-
       // map over the array of data and creat the product cards + add the id key to the url
-
       // convert the price to $ 00.00 format
       const toUsd = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
       });
-      console.log(typeof data);
+      // console.log(typeof data);
       const html = data
 
         .map(teddies => {
@@ -63,6 +56,8 @@ getProducts()
 function cartCount() {
   let productInLocalStorage = localStorage.getItem('cart');
   let productArray = JSON.parse(productInLocalStorage);
-  document.getElementById('count').innerHTML = productArray.length;
+  if (productInLocalStorage !== null) {
+    document.getElementById('count').innerHTML = productArray.length;
+  }
 }
 cartCount();

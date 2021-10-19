@@ -16,7 +16,6 @@ function showProduct() {
             return response.json();
         })
         .then((data) => {
-            console.log(data)
             teddy = data;
             // call the functions
             createProduct(teddy);
@@ -81,7 +80,9 @@ addToCartBtn.addEventListener('click', () => {
 function cartCount() {
     let productInLocalStorage = localStorage.getItem('cart');
     let localStorageArray = JSON.parse(productInLocalStorage);
-    document.getElementById('count').innerHTML = localStorageArray.length;
+    if (productInLocalStorage !== null) {
+        document.getElementById('count').innerHTML = localStorageArray.length;
+    }
 }
 
 // call the showProduct function
