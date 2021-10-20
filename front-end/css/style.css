@@ -10,6 +10,20 @@ nav {
     color: #a164ce !important;
 }
 
+.fa-shopping-cart {
+    position: absolute;
+}
+
+#count {
+    position: relative;
+    left: 15px;
+    top: -18px;
+    color: #a164ce;
+    font-weight: bolder;
+    font-size: 15px;
+    font-family: 'montzerat';
+}
+
 .head-title {
     font-size: 2.5rem !important;
     line-height: 4rem;
@@ -53,34 +67,25 @@ footer a {
     padding: 0 20px;
 }
 
-
 /* product page css */
-
 .product {
-
-
     background-color: #a164ce;
     color: black;
     display: flex;
     justify-content: center;
     height: auto;
     padding: 15px;
-
-
 }
 
 .product img {
     border-radius: 25px;
-
 }
 
 @media only screen and (max-width: 900px) {
     .card {
         width: 80vw !important;
     }
-
 }
-
 
 /* cart page css */
 .cart {
@@ -89,10 +94,8 @@ footer a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: auto;
-
-
-
 }
 
 table {
@@ -101,21 +104,18 @@ table {
     width: 100%;
 }
 
-
-
 th,
 td {
     width: 100px;
     text-align: center;
-
     padding: 5px;
 }
 
 /* confirmation page */
-.confirmation{
-height: 70vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.confirmation {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -48,22 +48,17 @@
             </div>
         </div>
     </nav>
-
     <section class="cart">
-
         <div class="card" style=" width: 40rem;">
             <h1 class="text-center">Cart details</h1>
             <div id="cart-is-emty"></div>
             <table id="cart-content">
-
             </table>
             <br>
-            <h3 id="">Your total price is: <p id="total-cost"></p></h3>
-
-
+            <h3 id="total-cost"></h3>
         </div>
 
-        <div class="card" style="width: 40rem;">
+        <div class="card" style="width: 40rem;" onsubmit="return makeRequest()">
             <form class="validation-form row  requires-validation" method="post" novalidate>
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">First name</label>
@@ -122,7 +117,6 @@
                 </div>
             </form>
         </div>
-
 
     </section>
 

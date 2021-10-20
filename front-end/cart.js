@@ -28,10 +28,8 @@ function displayCart() {
             let thPrice = document.createElement('th');
             thPrice.className = 'product-price';
             let removeButton = document.createElement('th');
-
             let priceToString = localStorageItems[i].productPrice.toString();
             let splicedPrice = priceToString.slice(0, 2);
-
             thName.innerHTML = localStorageItems[i].productName;
             thColor.innerHTML = localStorageItems[i].productColor;
             thPrice.innerHTML = toUsd.format(splicedPrice);
@@ -63,32 +61,36 @@ function removeProduct(index) {
 // total cost of the products in cart
 let cart = JSON.parse(localStorage.getItem('cart'));
 let total = 0
-if (cart !== null) {
+if (cart.length != 0) {
     for (let i = 0; i < cart.length; i += 1) {
         total += cart[i].productPrice
     }
     let priceToString = total.toString();
     let splicedPrice = priceToString.slice(0, -2);
-
-
     let totalCost = document.getElementById('total-cost')
-    totalCost.innerHTML = '$ ' + splicedPrice + '.00';
+    totalCost.innerHTML = 'Your total price is: $ ' + splicedPrice + '.00';
 }
-
+if (cart.length = 0) {
+    let totalCost = document.getElementById('total-cost')
+    totalCost.innerHTML = '';
+}
 
 //---------------------------------------------------------------------------------------------------------------------
 
 // Post data (contact object + products array) to the backend
-let submit = document.getElementById('submit-order');
-let firstName = document.getElementById('first-name');
-let lastName = document.getElementById('last-name');
-let eMail = document.getElementById('e-mail');
-let address = document.getElementById('address');
-let city = document.getElementById('city');
 
-let products = [];
-let cartArray = JSON.parse(localStorage.getItem('cart'));
-submit.addEventListener('click', () => {
+function makeRequest() {
+    let submit = document.getElementById('submit-order');
+    let firstName = document.getElementById('first-name');
+    let lastName = document.getElementById('last-name');
+    let eMail = document.getElementById('e-mail');
+    let address = document.getElementById('address');
+    let city = document.getElementById('city');
+
+    let products = [];
+    let cartArray = JSON.parse(localStorage.getItem('cart'));
+
+
     for (let i = 0; i < cartArray.length; i++) {
         products.push(cartArray[i].productId);
     }
@@ -103,18 +105,12 @@ submit.addEventListener('click', () => {
         contact: contact,
         products: products,
     }
-    makeRequest(data)
-})
-
-function makeRequest(data) {
     fetch('http://localhost:3000/api/teddies/order', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-
         },
-
         body: JSON.stringify(data)
     }).then((res) => {
         return res.json();
@@ -126,3 +122,21 @@ function makeRequest(data) {
         console.log(err);
     })
 };
+
+// form validation using bootstrap 5
+(function () {
+    'use strict'
+    const forms = document.querySelectorAll('.requires-validation')
+    Array.from(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+
+})()
