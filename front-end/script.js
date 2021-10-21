@@ -25,7 +25,7 @@ function getProducts() {
           let priceToString = teddies.price.toString();
           let thePrice = priceToString.slice(0, 2);
           return `
-           <div class=" card p-2 ">
+           <div class=" card p-4 ">
              <a href="product.html?id=${teddies._id}">
                <img src="${teddies.imageUrl}" class="card-img-top" alt="${teddies.name}">
              </a>

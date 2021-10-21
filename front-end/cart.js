@@ -69,6 +69,8 @@ if (cart.length != 0) {
     let splicedPrice = priceToString.slice(0, -2);
     let totalCost = document.getElementById('total-cost')
     totalCost.innerHTML = 'Your total price is: $ ' + splicedPrice + '.00';
+    //store total cost in localStorage
+    localStorage.setItem('total', JSON.stringify(splicedPrice));
 }
 if (cart.length = 0) {
     let totalCost = document.getElementById('total-cost')
@@ -80,7 +82,6 @@ if (cart.length = 0) {
 // Post data (contact object + products array) to the backend
 
 function makeRequest() {
-    let submit = document.getElementById('submit-order');
     let firstName = document.getElementById('first-name');
     let lastName = document.getElementById('last-name');
     let eMail = document.getElementById('e-mail');

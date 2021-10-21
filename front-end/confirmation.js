@@ -4,7 +4,8 @@ function displayConf() {
     let confNumber = document.getElementById('confirmation-nb');
     let orderId = JSON.parse(localStorage.getItem('orderid'));
     let contact = JSON.parse(localStorage.getItem('contact'));
+    let total = JSON.parse(localStorage.getItem('total'));
     thankMessage.innerHTML = `Thank you <strong> ${contact.firstName} ${contact.lastName}</strong>`;
-    confNumber.innerHTML = `Your confirmation number is :<strong> ${orderId}</strong>`;
+    confNumber.innerHTML = `Your total price is: <strong>${'$' +total}</strong> and your confirmation number is :<strong> ${orderId}</strong>`;
 }
 displayConf()
