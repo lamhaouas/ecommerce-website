@@ -1,8 +1,7 @@
 # Build an ecommerce Website
 * Orinoco, Handmade teddy bear ecommerce website build using Vanilla JavaScript with no libraries, HTML5 CSS3 and Bootstrap 5.
 The website is an initial MVP to develope with a test plan covering features to test and not to test.
-* This is my 5th project on my path learning web development, It is mostly focused on using pure javascript to build a dynamic front end, i learned:<br/>
-- interacting with API's displaying and posting datausing <br/>- URL query parametersstoring and getting data from locaStorage to build a shopping cartforms <br/>- Data validation writing a test plan
+* This is my 5th project on my path learning web development, It is mostly focused on using pure javascript to build a dynamic front end,i learned:<br/>- Working with API's displaying and posting data using FETCH <br/>- URL Search parameters <br/>- Storing and getting data from locaStorage to build a shopping cart<br/>- Forms Data validation writing a test plan
 ## Architecture 
 The front end will require 4 pages:
 * A list view page, showing all items available for sale.
