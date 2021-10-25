@@ -2,7 +2,7 @@
 
 function getProducts() {
 
-  fetch('http://localhost:30000/api/teddies')
+  fetch('http://localhost:3000/api/teddies')
     .then(response => {
       // check for errors using the ok status
       if (!response.ok) {

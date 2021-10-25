@@ -67,6 +67,12 @@ footer a {
     padding: 0 20px;
 }
 
+@media only screen and (max-width: 400px) {
+    h1 {
+        font-size: small;
+    }
+}
+
 /* product page css */
 .product {
     background-color: #a164ce;
