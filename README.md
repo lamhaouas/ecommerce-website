@@ -10,3 +10,5 @@ The front end will require 4 pages:
 * An order confirmation page, thanking the user for their order, showing the total price and the order ID returned by the server.
 ## Installation to run the server
 From within the project folder, run npm install. You can then run the server with node server. The server should run on localhost with default port 3000.
+## Test plan
+[test plan for the project](/P5_SimohamedLamhaouas_test_plan.pdf..pdf)
