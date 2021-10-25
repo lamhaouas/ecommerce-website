@@ -116,8 +116,8 @@ function makeRequest() {
     }).then((res) => {
         return res.json();
     }).then((response) => {
-        localStorage.setItem('contact', JSON.stringify(response.contact));
-        localStorage.setItem('orderid', JSON.stringify(response.orderId));
+        sessionStorage.setItem('contact', JSON.stringify(response.contact));
+        sessionStorage.setItem('orderid', JSON.stringify(response.orderId));
         window.location.replace('confirmation.html');
     }).catch((err) => {
         console.log(err);
