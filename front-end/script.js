@@ -6,7 +6,7 @@ function getProducts() {
     .then(response => {
       // check for errors using the ok status
       if (!response.ok) {
-        throw Error();
+        throw Error("Please try later, Thank you!");
       }
       return response.json();
     })

@@ -125,3 +125,8 @@ td {
     justify-content: center;
     align-items: center;
 }
+
+.confirmation .card-header {
+    background-color: #339900;
+
+}

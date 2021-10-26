@@ -70,7 +70,7 @@ if (cart.length != 0) {
     let totalCost = document.getElementById('total-cost')
     totalCost.innerHTML = 'Your total price is: $ ' + splicedPrice + '.00';
     //store total cost in localStorage
-    localStorage.setItem('total', JSON.stringify(splicedPrice));
+    sessionStorage.setItem('total', JSON.stringify(splicedPrice));
 }
 if (cart.length = 0) {
     let totalCost = document.getElementById('total-cost')
@@ -119,6 +119,7 @@ function makeRequest() {
         sessionStorage.setItem('contact', JSON.stringify(response.contact));
         sessionStorage.setItem('orderid', JSON.stringify(response.orderId));
         window.location.replace('confirmation.html');
+        window.localStorage.clear();
     }).catch((err) => {
         console.log(err);
     })
